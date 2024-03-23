@@ -1,7 +1,10 @@
 package cn.wuyujin.androiddemo.friendlist;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +30,14 @@ public class FriendListActivity extends AppCompatActivity {
         // <ListView> 的id值( setContentView 处设置的 layout 中的 list_view.id)。
         ListView listView = (ListView) findViewById(R.id.friend_list_view);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Friend currentFriend = friendList.get(position);
+                Toast.makeText(FriendListActivity.this, currentFriend.getNickname(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
