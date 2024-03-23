@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
 
@@ -36,11 +37,29 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
 //        return super.getView(position, convertView, parent);
 
         // xml view 相关id获取
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-        View view = inflater.inflate(resourceId, parent, false);
-        ImageView avatar = (ImageView) view.findViewById(R.id.friend_avatar);
-        TextView nickname = (TextView) view.findViewById(R.id.friend_nickname);
-        TextView onlineStatus = (TextView) view.findViewById(R.id.online_status);
+//        LayoutInflater inflater = LayoutInflater.from(getContext());
+//        View view = inflater.inflate(resourceId, parent, false);
+
+        View view = null;
+        FriendItemViewHolder viewHolder = null;
+        if (null != convertView) {
+            Log.d(TAG, "getView: 复用");
+            view = convertView;
+            viewHolder = (FriendItemViewHolder) view.getTag();
+        } else {
+            Log.d(TAG, "getView: 创建新的");
+            view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+//            ImageView avatar = (ImageView) view.findViewById(R.id.friend_avatar);
+//            TextView nickname = (TextView) view.findViewById(R.id.friend_nickname);
+//            TextView onlineStatus = (TextView) view.findViewById(R.id.online_status);
+
+            viewHolder = new FriendItemViewHolder();
+            viewHolder.avatar = (ImageView) view.findViewById(R.id.friend_avatar);
+            viewHolder.nickname = (TextView) view.findViewById(R.id.friend_nickname);
+            viewHolder.onlineStatus = (TextView) view.findViewById(R.id.online_status);
+            view.setTag(viewHolder);
+        }
+
 
         // 从当前的 object --> view 的当前行
         Friend friend = this.getItem(position);
@@ -53,9 +72,9 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
 //        2024-03-23 21:49:12.038 FriendAdapter            D  getView: position=10 viewHashCode:191115799  object=Friend{avatarId=2131165412, nickname='name_311', onlineStatus=OFFLINE}
 //        2024-03-23 21:49:14.721 FriendAdapter            D  getView: position=10 viewHashCode:18459512  object=Friend{avatarId=2131165412, nickname='name_311', onlineStatus=OFFLINE}
         Log.d(TAG, String.format("getView: position=%s viewHashCode:%s  object=%s", position, view.hashCode(), friend));
-        avatar.setImageResource(friend.getAvatarId());
-        nickname.setText(friend.getNickname());
-        onlineStatus.setText(friend.getOnlineStatus().value());
+        viewHolder.avatar.setImageResource(friend.getAvatarId());
+        viewHolder.nickname.setText(friend.getNickname());
+        viewHolder.onlineStatus.setText(friend.getOnlineStatus().value());
 
         return view;
     }
