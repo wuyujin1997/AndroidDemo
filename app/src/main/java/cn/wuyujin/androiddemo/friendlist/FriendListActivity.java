@@ -43,7 +43,7 @@ public class FriendListActivity extends AppCompatActivity {
             list.add(new Friend(R.drawable.img_0309, "name_309", OnlineStatus.OFFLINE));
             list.add(new Friend(R.drawable.img_0310, "name_310", OnlineStatus.DATA_ONLINE));
             list.add(new Friend(R.drawable.img_0311, "name_311", OnlineStatus.OFFLINE));
-            list.add(new Friend(R.drawable.img_0312, "name_312", OnlineStatus.WIFI_ONLINE));
+            list.add(Friend.builder().avatarId(R.drawable.img_0312).nickname("name_312").onlineStatus(OnlineStatus.WIFI_ONLINE).build());
         }
         return list;
     }

@@ -30,6 +30,12 @@ android {
 
 dependencies {
 
+    // 新增 lombok 依赖，简化 bean 定义/操作。
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+    testCompileOnly 'org.projectlombok:lombok:1.18.32'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
+
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
