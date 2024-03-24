@@ -1,6 +1,7 @@
 package cn.wuyujin.androiddemo.fragment_base;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -16,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 import cn.wuyujin.androiddemo.R;
 
 public class FragmentUsageTestActivity extends AppCompatActivity {
+    private static final String TAG = "FragmentUsageTestActivi";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,9 @@ public class FragmentUsageTestActivity extends AppCompatActivity {
         replaceFragment(new RightFragment());
 
     }
+
     private void replaceFragment(Fragment fragment) {
+        Log.w(TAG, "Fragment的生命周期：=====》切换Fragment");
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.right_layout, fragment);
@@ -45,4 +49,9 @@ public class FragmentUsageTestActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        Log.w(TAG, "Fragment的生命周期：=====》点击了【返回】按钮 (onBackPressed)");
+        super.onBackPressed();
+    }
 }
