@@ -4,16 +4,16 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".friendlist.FriendListActivity">
+    tools:context=".recyclerview.MyRecyclerViewActivity">
 
     <ImageView
-        android:id="@+id/friend_avatar"
+        android:id="@+id/rv_friend_avatar"
         android:layout_width="50dp"
         android:layout_height="50dp"
         />
 
     <TextView
-        android:id="@+id/friend_nickname"
+        android:id="@+id/rv_friend_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="4"
@@ -22,7 +22,7 @@
         />
 
     <TextView
-        android:id="@+id/online_status"
+        android:id="@+id/rv_online_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"

@@ -11,12 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 import cn.wuyujin.androiddemo.R;
 

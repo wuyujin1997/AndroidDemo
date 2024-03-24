@@ -4,10 +4,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyListView">
+    android:orientation="horizontal"
+    tools:context=".recyclerview.MyRecyclerViewActivity">
 
-    <ListView
-        android:id="@+id/friend_list_view"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
