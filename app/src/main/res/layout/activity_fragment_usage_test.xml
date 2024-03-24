@@ -15,9 +15,17 @@
         android:layout_weight="1"
         />
 
-    <fragment
-        android:id="@+id/id_right_fragment"
-        android:name="cn.wuyujin.androiddemo.fragment_base.RightFragment"
+<!--    <fragment-->
+<!--        android:id="@+id/id_right_fragment"-->
+<!--        android:name="cn.wuyujin.androiddemo.fragment_base.RightFragment"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_weight="1"-->
+<!--        />-->
+
+<!--    将原先的 fragment组件 替换成一个帧布局： FrameLayout，在 FrameLayout 中执行 fragment 的替换。-->
+    <FrameLayout
+        android:id="@+id/right_layout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
