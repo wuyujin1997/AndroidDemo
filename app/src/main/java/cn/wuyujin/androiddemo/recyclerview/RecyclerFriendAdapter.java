@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +37,37 @@ public class RecyclerFriendAdapter extends RecyclerView.Adapter<RecyclerFriendAd
         // 这里一定是 list_item/行/列表的子项目 的layout。
         View view = inflater.inflate(R.layout.activity_my_recycler_list_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
+
+        // 注册 listener for click （为最外层layout 和内部的子组件绑定listener）
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Friend clickFriend = dataList.get(holder.getAdapterPosition());
+                Toast.makeText(v.getContext(), "item 被点击 " + clickFriend.getNickname(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.friendAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Friend clickFriend = dataList.get(holder.getAdapterPosition());
+                Toast.makeText(v.getContext(), "头像： " + clickFriend.getAvatarId(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.friendNickname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Friend clickFriend = dataList.get(holder.getAdapterPosition());
+                Toast.makeText(v.getContext(), "nickName： " + clickFriend.getNickname(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.friendOnlineStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Friend clickFriend = dataList.get(holder.getAdapterPosition());
+                Toast.makeText(v.getContext(), "在线状态： " + clickFriend.getOnlineStatus(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return holder;
     }
 
@@ -57,11 +89,13 @@ public class RecyclerFriendAdapter extends RecyclerView.Adapter<RecyclerFriendAd
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        View lineItemView;
         ImageView friendAvatar;
         TextView friendNickname;
         TextView friendOnlineStatus;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            lineItemView = itemView;
             friendAvatar = (ImageView) itemView.findViewById(R.id.rv_friend_avatar);
             friendNickname = (TextView) itemView.findViewById(R.id.rv_friend_nickname);
             friendOnlineStatus = (TextView) itemView.findViewById(R.id.rv_online_status);
