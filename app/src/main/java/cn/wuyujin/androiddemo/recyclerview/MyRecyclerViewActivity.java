@@ -25,6 +25,7 @@ public class MyRecyclerViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_recycler_view);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         RecyclerView.Adapter adapter = new RecyclerFriendAdapter(this.mockFriendList(10));
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
